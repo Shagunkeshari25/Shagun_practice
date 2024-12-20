@@ -1,0 +1,16 @@
+# 1. What is the output of the following function when head node of following linked list is passed as input?
+#     1 -> 2 -> 3 -> 4 -> 5 
+
+# 2. WAP to find the maximum value in a linked list and replace it with given value.
+#    (assume that the LL is populated with whole numbers and there is only one max. value in the LL)
+
+# 3. Given a LL containing whole numbers,Write a funtion which finds and return the sum of all elements 
+#    at the odd position in the given LL.
+
+# 4. WAP to reverse a LL containing integer data (in-place reversal)
+
+# 5. Given a LL of characters. Write a python function to return a new string that is created by appending all the 
+#    character given in the LL as per the rules
+#    replace '*' or '/' by a single space and in case two concecutive occurences of those then replace by a single space
+#    and convert next character to uppar case
+#    no more than 2 concecutive character of'*' or '/' and LL always end with alphabet

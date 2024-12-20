@@ -1,0 +1,76 @@
+# Solution 1
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+def fun(head):
+    if head == None:
+        return
+    if head.next.next != None:
+        print(head.data, " ", end='')
+        fun(head.next)
+    print(head.data, " ", end='')
+
+head = Node(1)
+head.next = Node(2)
+head.next.next = Node(3)
+head.next.next.next = Node(4)
+head.next.next.next.next = Node(5)
+
+fun(head)      # 1 2 3 4 3 2 1
+
+# Solution 2
+def replace_max(self,value):
+    temp = self.head
+    max = temp
+
+    while temp != None:
+        if temp.data > max.data:
+            max = temp
+        temp = temp.next
+
+    max.data = value
+
+# Solution 3
+def sum_odd_nodes(self):
+    temp = self.head
+    counter = 0
+    result = 0
+    while temp != None:
+        if counter %2 != 0:
+            result = result + temp.data
+
+        counter += 1
+        temp = temp.next
+    print (result)
+
+
+# Solution 4
+def reverse(self):
+    prev_node = None
+    curr_node = self.head
+
+    while curr_node != None:
+        next_node = curr_node.next
+        curr_node.next = prev_node
+        curr_node = next_node
+        prev_node = curr_node
+
+    self.head = prev_node
+
+    
+# Solution 5
+def change_sent(self):
+    temp =self.head
+
+    while temp != None:
+        if temp.data =='*' or temp.data == '/':
+            temp.data = ' '
+
+            if temp.next.data == '*' or temp.next.data == '/':
+                temp.next.next.data = temp.next.next.data.upper()
+                temp.next = temp.next.next
+
+        temp = temp.next
+

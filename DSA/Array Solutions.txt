@@ -1,0 +1,77 @@
+# Solution 1
+# def missingNumber(self, arr):
+#         n = len(arr)+1
+#         expected_sum = n*(n+1)//2
+#         actual_sum = sum(arr)
+#         missing_num = expected_sum - actual_sum
+#         return missing_num
+
+# Solution 2
+# def peakElement(arr):
+        
+#         n = len(arr)
+#         if n ==0:
+#             return -1
+            
+#         for i in range(n):
+#             if (i == 0 or arr[i] >= arr[i - 1]) and (i == n - 1 or arr[i] >= arr[i + 1]):
+#                 return i
+#         return -1
+
+# print(peakElement([1,2,3]))
+
+# # Solution 3
+# def search(arr, x):
+#         n = len(arr)
+#         for i in range(n):
+#             if arr[i] == x:
+#                 return i
+                
+#         return -1
+
+# # Solution 4
+# def isSubset(a, b):
+#         hash_table = set(a)
+#         for element in b:
+#             if element not in hash_table:
+#                 return 0
+#         return "Yes"
+    
+# print(isSubset([11, 7, 1, 13, 21, 3, 7, 3],[11, 3, 7, 1, 7]))
+ 
+# # Solution 5
+# def check(arr1, arr2) :
+#     count_dict1 = {}
+#     count_dict2 = {}
+    
+#     for element in arr1:
+#         if element in count_dict1:
+#             count_dict1[element] += 1
+#         else:
+#             count_dict1[element] = 1
+            
+#     for element in arr2:
+#         if element in count_dict2:
+#             count_dict2[element] += 1
+#         else:
+#             count_dict2[element] = 1
+            
+#     if count_dict1 == count_dict2:
+#         print(count_dict1)     # {1: 1, 2: 1, 5: 1, 4: 1, 0: 1}
+#         print(count_dict2)     # {2: 1, 4: 1, 5: 1, 0: 1, 1: 1}
+#         return True
+
+#     return False
+    
+# print(check([1, 2, 5, 4, 0],[2, 4, 5, 0, 1]))
+
+# Solution 6
+def largest(arr):
+        l = len(arr)
+        max = arr[0]
+        for i in range(l):
+            if arr[i] > max:
+                max = arr[i]
+        return max     
+
+print(largest([1, 2, 5, 4, 0]))

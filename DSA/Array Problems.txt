@@ -1,9 +1,16 @@
 # 1.Write a program to identify and return the missing element of array .
+
 # 2.Write a program to find its peak element of integers arr[] and return its index
 #    NOTE : An element is considered to be peak if its value is greater than or equal to the values of its adjacent elements (if they exist).
+
 # 3.WAP to find whether element is present in the array or not
+
 # 4.WAP to determine whether array b is a subset of array a ,where both arrays may contain duplicate elements and
 #     each occurrence of a duplicate element is considered as a separate element of the set.
+
 # 5.WAP to find whether the given arrays of equal size are equal. arrangement of element may be different through.
 #    NOTE: If there are repetitions, then counts of repeated elements must also be the same for two arrays to be equal.
+
 # 6. WAP to find a largest element in Array.
+
+# 7.WAP to find the sum of maximum contagious subarray from array 

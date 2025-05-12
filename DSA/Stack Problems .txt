@@ -1,1 +1,4 @@
 # 1. WAP to reverse a code.
+# 2. Text EDitor (undo redo using stack)
+# 3. Celebrity Problem 
+# 4. Balanced parantheses Problem

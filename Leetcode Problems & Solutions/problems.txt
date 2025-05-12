@@ -1,0 +1,397 @@
+# Problem 1: Two Sum
+
+# Solution :
+# def twoSum(nums, target):
+#     for i in range(len(nums)):
+#         for j in range(i+1,len(nums)):
+#             if nums[i]+nums[j] == target:
+#                 return [i,j]
+            
+# Problem 9: Palindrome Number
+
+# Solution :
+# def isPalindrome(x):
+
+#     n = str(x)
+#     return n == n[: :-1]
+
+# Problem 13: Roman to Integer
+
+# Solution :
+# def romanToInt(s):
+#     roman_to_integer = {'I': 1,
+#                         'V': 5,
+#                         'X': 10,
+#                         'L': 50,
+#                         'C': 100,
+#                         'D': 500,
+#                         'M': 1000}
+
+#     s = s.replace('IV', 'IIII') \
+#          .replace('IX', 'VIIII') \
+#          .replace('XL', 'XXXX') \
+#          .replace('XC', 'LXXXX') \
+#          .replace('CD', 'CCCC') \
+#          .replace('CM', 'DCCCC')
+        
+#     return sum(map(roman_to_integer.get, s))
+
+# print(romanToInt('XCIII'))
+
+#      OR
+            
+# def romanToInt(s: str) -> int:
+#        roman_to_int = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+#        prev_value = 0
+#        total = 0
+
+#        def process(numeral):
+#           nonlocal prev_value, total
+#           current_value = roman_to_int[numeral]
+#           if current_value < prev_value:
+#             total -= current_value
+#           else:
+#             total += current_value
+
+#           prev_value = current_value
+
+#        list(map(process, reversed(s)))
+#        return total
+
+# print(romanToInt('XCIVII'))
+
+# Problem 14: Longest Common Prefix
+
+# Solution :
+# def longestCommonPrefix(strs):
+#         if not strs:
+#             return ""
+
+#         prefix = strs[0]
+#         for s in strs[1:]:
+#             while not s.startswith(prefix):
+#                 prefix = prefix[:-1]
+#                 if not prefix:
+#                     return ""
+
+#         return prefix
+# print(longestCommonPrefix(["dog","racecar","car"]))
+# print(longestCommonPrefix(["flower", "flow", "flight"]))
+
+# Problem 20: Valid Parentheses
+
+# Solution :
+# def isValid(s: str) -> bool:
+#     L = {'(':')','{':'}','[':']'}
+#     coll= []
+#     for i in s:
+#         if i in L.keys():
+#           coll.append(i) 
+#         elif i in L.values():
+#             if not coll:
+#               return False
+#             data = coll[-1]
+#             if L[data] == i:
+#                 coll.pop()
+#             else:
+#                 return False
+
+#     if not coll:
+#       return True
+#     else:
+#       return False 
+
+# print(isValid("[]"))
+
+# Problem 21 : Merge two Sorted list
+
+#Solution :
+# def mergeTwoLists(list1, list2):
+#         dummy = ListNode()
+#         current = dummy
+
+#         while list1 and list2:
+#             if list1.val < list2.val:
+#                 current.next= list1
+#                 list1 = list1.next
+#             else:
+#                 current.next = list2
+#                 list2 = list2.next
+#             current = current.next
+        
+#         current.next = list1 if list1 else list2
+#         return dummy.next    
+
+# Problem 26 : Remove Duplicate from Sorted Array
+
+# Solution :
+# def removeDuplicates(nums):
+#     i=1
+#     for j in range(1,len(nums)):
+#         if nums[j] != nums[i-1]:
+#             nums[i] = nums[j]
+#             i += 1
+#     return i
+# print(removeDuplicates([0,0,1,1,1,2,4,5]))
+
+# Problem 27 : Remove Element
+
+# Solution :
+# def removeElement(nums, val):
+#         i = 0
+#         for j in range(len(nums)):
+#             if nums[j] != val:
+#                 nums[i] = nums[j]
+#                 i +=1
+#         print(i)
+            
+# removeElement([3,2,2,3],3)
+
+# Problem 28 :Find the index of first occurrence in a string
+       
+# Solution :
+# def strStr(haystack, needle):
+#         n = len(needle)
+#         for j in range(len(haystack)):
+#             if haystack[j:j+n] == needle:
+#                 return j
+            
+#         return -1
+# print(strStr("sadbutsad","sad"))  
+
+# Problem 35 : Search insert Position
+
+# Solution :
+# def searchInsert(nums, target):
+#         for i in range(len(nums)):
+#             if nums[i] == target:
+#                 return i        
+#             elif nums[i] > target:
+#                 return i 
+            
+#         return i+1
+            
+# print(searchInsert([1,3,5,6],7))
+
+# Problem 58 : Length of Last Word
+
+# Solution :
+# def lengthOfLastWord(s):
+#         word = s.split()[-1]
+#         return len(word)
+
+# s = "   fly me   to   the moon  "
+# print(lengthOfLastWord(s))
+
+# Problem 66 :Plus One
+
+# Solution :
+# def plusOne(digits):
+#     for i in range(len(digits)-1,-1,-1):
+#         if digits[i] < 9:
+#             digits[i] += 1
+#             break
+#         else:
+#             digits[i] =0
+#     else:
+#         digits.insert(0,1) # Runs only if all digits were 9
+    
+#     return digits
+
+# digits = [9,9]
+# print(plusOne(digits))
+
+# Probelm 67: Add Binary
+
+# Solution :
+# def addBinary(a, b):
+#         result = str(bin(int(a,2) + int(b,2))[2:])
+#         print(result)
+
+# addBinary("1010", "1011")
+
+# Problem 69: sqrt(x)
+
+# Solution :
+# import math
+# def mySqrt(x):
+#     result1= math.isqrt(x) # .isqrt() returns only the integer part
+#     result2= math.sqrt(x)
+#     print(result1)
+#     print(result2)
+
+# mySqrt(26)
+
+# Problem 83 : Remove Duplicates from sorted List    
+
+# Solution :    
+# def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+#         curr = head
+#         while curr and curr.next:
+#             if curr.val == curr.next.val:
+#                 curr.next = curr.next.next
+#             else:  
+#                 curr = curr.next
+#         return head
+
+# Problem 88: Merge Sorted Array
+
+# Solution :
+def merge(nums1, m, nums2, n):
+    p1 = m-1
+    p2 = n-1
+    p = m+n-1
+    while p2>=0:
+        if p1>=0 and nums1[p1] > nums2[p2]:
+            nums1[p] = nums1[p1]
+            p1 -= 1
+                
+        else:
+            nums1[p] = nums2[p2]
+            p2 -= 1
+        p -=1   
+
+    return nums1
+
+  # OR
+def merge(nums1, m, nums2, n):
+    i = m - 1 
+    j = n - 1  
+    k = m + n - 1 
+    while i >= 0 and j >= 0:
+        if nums1[i] > nums2[j]:
+            nums1[k] = nums1[i]
+            i -= 1
+        else:
+            nums1[k] = nums2[j]
+            j -= 1
+        k -= 1
+
+    while j >= 0:
+        nums1[k] = nums2[j]
+        j -= 1
+        k -= 1
+
+    return nums1
+
+print(merge([1,2,3,0,0,0],3,[2,5,6],3))
+
+# Problem 125: Valid Palindrome
+
+# Solution :
+def isPalindrome(s):
+    S = ''.join(l.lower() for l in s if l.isalnum())
+    return S == S[::-1]
+        
+print(isPalindrome("A man, a plan, a canal: Panama"))
+print(isPalindrome("race a car"))
+
+
+# Problem 203: Remove Linked List Elements
+
+# Solution :
+# def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
+#         dummy = ListNode(0)
+#         dummy.next = head
+#         curr = dummy
+#         while curr and curr.next:
+#             if curr.next.val == val:
+#                 curr.next = curr.next.next
+             
+#             else:
+#                 curr = curr.next
+
+#         return dummy.next 
+# print(removeElements([1,2,6,3,4,5,6],6))
+
+
+# Problem 2 : Add Two Numbers
+
+# Solution :
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution:
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+        head = ListNode(0)  # Dummy node to simplify code
+        curr = head
+        carry = 0
+        
+        # Traverse both lists
+        while l1 or l2:
+            # Get the values from l1 and l2, or use 0 if the list is shorter
+            v1 = l1.val if l1 else 0
+            v2 = l2.val if l2 else 0
+            
+            # Sum the values and the carry from the previous iteration
+            total = v1 + v2 + carry
+            carry = total // 10  # Update carry for next iteration
+            curr.next = ListNode(total % 10)  # Create a new node with the last digit of total
+            curr = curr.next  # Move to the next node
+            
+            # Move to the next nodes in l1 and l2, if available
+            if l1:
+                l1 = l1.next
+            if l2:
+                l2 = l2.next
+        
+        # If there is a carry left, create a new node for it
+        if carry:
+            curr.next = ListNode(carry)
+        
+        return head.next  # Return the result, starting from the first actual node
+
+# Helper function to convert a list to a linked list
+def list_to_linked_list(lst):
+    dummy = ListNode(0)
+    curr = dummy
+    for val in lst:
+        curr.next = ListNode(val)
+        curr = curr.next
+    return dummy.next
+
+# Helper function to convert a linked list to a list
+def linked_list_to_list(node):
+    result = []
+    while node:
+        result.append(node.val)
+        node = node.next
+    return result
+
+# Example usage:
+l1 = list_to_linked_list([2, 4, 3])  # 342
+l2 = list_to_linked_list([5, 6, 4])  # 465
+sol = Solution()
+result = sol.addTwoNumbers(l1, l2)
+print(linked_list_to_list(result))  # Output: [7, 0, 8] (807 in reverse)
+
+
+# Problem 136: Single Number
+
+# Solution:
+def singleNumber(nums):
+    result = 0
+    for num in nums:
+        result = result ^ num      # XOR with current number
+    return result
+
+print(singleNumber([4,1,2,1,2]))
+
+
+# Problem 118: Pascal's Triangle
+
+# Solution:
+def generate(numRows):
+        List =[]
+        for i in range(1,numRows+1):
+            for j in range(1,numRows+1):
+                if j>2:
+                    lst = List[j-1]
+                    List.append(list("1,"+ int(lst[k])+ int(lst[k+1]) +"1" for k in range(1,len(lst))))
+                else:
+                    List.append(list('1'*j))
+            return List
+
+print(generate(5))

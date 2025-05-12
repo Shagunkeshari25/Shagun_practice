@@ -1,0 +1,151 @@
+# Example 1: Square of size 'N'
+# def generate_square(n):
+#     return['*'*n for i in range(n)]   
+
+# n = 5
+# print(generate_square(n))
+
+
+# Example 2: Hollow Square of size 'N'
+# n = 3
+# lst=[]
+# for i in range(n):
+#     if i==0 or i==n-1:
+#         lst.append('*'*n)
+#     else:
+#         lst.append('*'+' '*(n-2)+'*')
+# print(lst)   
+
+# Example 3: Rectangle Pattern
+# def generate_rectangle(n,m):
+#     return['*'* m for _ in range(n)]
+
+# print(generate_rectangle(4,5))
+
+# Example 4: Right angled triangle
+# triangle =[]
+# for i in range(1,n+1):
+#     triangle.append('*' * i)
+
+# print(triangle)
+
+# Example 5: Inverted right angled triangle
+# def generate_inverted_triangle(n):
+#     return ['*'* i for i in range(n,0,-1) ]
+
+# print(generate_inverted_triangle(3))
+
+# Example 6: Pyramid Pattern
+# n=3
+# Pyramid =[]
+# for i in range(1,n+1):
+#         Pyramid.append(('*'*(2*i -1)).center(2*n-1))
+
+# print(Pyramid)
+
+# Example 7: Inverted Pyramid Pattern
+# n = 5
+# pyramid =[]
+# for i in range(n,0,-1):
+#     pyramid.append(('*'*(2*i-1)).center(2*n-1))
+        
+# print(pyramid)
+
+# Example 8: Right angled triangle with numbers
+# n =3
+# triangle = []
+# for i in range(1,n+1):
+#     triangle.append(str(i)*i)
+        
+# print(triangle) 
+
+# Example 9: Floyds triangle
+# n=3
+# lst =[]
+# s=0    
+# for i in range(1,n+1):
+#     m =""
+#     for j in range(i):
+#         s = s + 1
+#         m = m + str(s) + " "
+#     lst.append((m.rstrip())) # or lst.append(m[:-1]) 
+        
+# print(lst)
+
+# Example 10: Diamond Pattern
+# def generate_diamond(n):
+#     lst =[]
+#     for i in range(1,n+1):
+#         lst.append(('*'*(2*i-1)).center(2*n-1))
+#     for i in range(n-1,0,-1):
+#         lst.append(('*'*(2*i-1)).center(2*n-1))
+        
+#     return lst
+# print(generate_diamond(3))
+
+# Example 11: Right Angled triangle II
+# lst =[]
+# n=4
+# for i in range(1,n+1):
+#     r = ('*'*i).rjust(n)
+#     lst.append(r)
+# print(lst)
+
+#   #OR
+# n=4
+# print([('*'*i).rjust(n) for i in range(1,n+1)])
+
+# Example 12: Sandglass Pattern
+# sandglass=[]
+# n=3
+# for i in range(n,0,-1):
+#     sandglass.append(("*"*(2*i-1)).center(2*n-1))
+        
+# for i in range(2,n+1):
+#     sandglass.append(('*'*(2*i-1)).center(2*n-1))
+        
+# print(sandglass)
+
+
+# Example 13: Hollow Right Triangle
+lst =[]
+n= 5
+for i in range(1,n+1):
+    if i==1 or i==2 or i==n:
+        lst.append('*'*i)
+    else:
+        m = '*'+ " "*(i-2) +'*'
+        lst.append(m)
+print(lst)
+
+# Example 14: Hollow Inverted Right triangle
+lst =[]
+n=5
+for i in range(n,0,-1):
+    if i==1 or i==2 or i==n:
+        lst.append('*'*i)
+    else:
+        s = '*'+ " "*(i-2) +'*'
+        lst.append(s)
+print(lst)
+
+# Example 15: Number Pyramid Pattern
+lst=[]
+n=4
+p = 0
+s=""
+for i in range(1,n+1):
+    p = p + 1
+    s = s + str(p) + " "
+    lst.append(s.strip().center(n*2 -1))
+print(lst)
+ 
+     # or 
+result =[]
+n =4
+for i in range(1,n+1):
+    row = " ".join(str(j) for j in range(1,i+1))
+    result.append(row.center(n*2 -1))
+        
+print(result)
+

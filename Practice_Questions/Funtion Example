@@ -1,0 +1,75 @@
+# Example 1: Temperature conversion
+def convert_temperature(temp,unit):
+    if unit == 'C':
+        converted = temp *9/5 + 32  #Celcius to Fahrenheit
+        return f"{converted:.1f} F"
+    
+    elif unit == 'F':
+        return f"{(temp-32) *5/9} C" # Fahrenheit to Celcius
+    
+    else:
+        return None
+    
+print(convert_temperature(25,'C'))
+print(convert_temperature(77,'F'))
+
+# Example 2: Password Strength Checker
+def is_strong_password(Password):
+    if len(Password)<8:
+        return False
+    if not any(char.isdigit()for char in Password):
+        return False
+    if not any (char.islower()for char in Password):
+        return False
+    if not any (char.isupper()for char in Password):
+        return False
+    if not any (char in "~!@#$%^&*()_+" for char in Password):
+        return False
+    return True
+
+print(is_strong_password("Welc2@()"))
+
+# Example 3: Calculate the total cost of items in a shopping Cart
+def calculate_total_cost(cart):
+    total_cost = 0
+    for item in cart:
+        total_cost += item['price']*item['quantity']
+    return f"{total_cost:.2f}"
+
+cart=[
+    {'name':'Apple','price':0.5,'quantity':4},
+     {'name':'Banana','price':0.3,'quantity':6},
+     {'name':'Orange','price':0.7,'quantity':3}
+     ]
+print(calculate_total_cost(cart))
+
+#Example 4: Check if a String is Palindrome
+def is_palindrome(s):
+    s = s.lower().replace(" ","")
+    return s == s[::-1]
+
+print(is_palindrome("A man a plan a canal Panama"))
+print(is_palindrome("Hello"))
+
+# Example 5: Calculate the factorials of a number using recursion
+def factorial(n):
+    if n==0:
+        return 1 
+    else:
+        return n *factorial(n-1)
+
+n =3   
+print(factorial(n))
+
+# Example 6:A function to read a file and count the frequency of each word
+
+
+# Example 7: Number of Rounds of Lift
+def calculate_lift_rounds(n, capacity):
+    if n % capacity == 0 :
+        return n // capacity
+    else :
+        return n // capacity +1
+
+print(calculate_lift_rounds(7,4))
+       

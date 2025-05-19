@@ -1,0 +1,137 @@
+# Example 1: Count Vowels in a string
+def count_vowels(s):
+    count = 0
+    Str = s.lower()
+    for i in Str:
+        if i in ['a','e','i','o','u']:
+            count += 1
+            
+    return count
+print(count_vowels("Hello, World!"))
+print(count_vowels("Python Programming"))
+
+# Example 2: Check for same strings
+def are_equal_strings(s, t):
+    if len(s) != len(t):
+        return False
+        
+    i = 0
+    while i< len(s):
+        if s[i] == t[i]:
+            i += 1
+        else:
+            return False
+    return True
+print(are_equal_strings("hello","hello"))
+
+
+# Example 3: Check Palindrome
+def is_palindrome(s):
+    Str = s.lower().replace(" ","")
+    return Str == Str[::-1]
+
+print(is_palindrome("Hello, World!"))
+print(is_palindrome("A man a plan a canal Panama"))
+
+
+# Example 4: Count words in a string
+def count_words(s):
+    S = s.split()
+    total_words = 0
+    for i in range(len(S)):
+        total_words += 1
+    return total_words  
+  
+print(count_words("Python programming is fun."))
+
+           #OR
+
+def count_words(s):
+    return len(s.split())
+print(count_words("Hello, World!"))
+
+
+# Example 5: Remove Duplicates in a string
+def remove_duplicates(s):
+    new_str = ""
+    for i in s:
+        if i in new_str:
+            continue
+        else:
+            new_str = new_str + i
+
+    return new_str
+print(remove_duplicates("programming"))
+
+
+# Example 6: Count consonants in a string
+def count_consonants(s):
+    V = "aeiouAEIOU"
+    count = 0
+    for i in s:
+        if i not in V and i.isalpha():
+            count +=  1 
+    return count
+            
+print(count_consonants("Hello, World!"))
+
+
+# Example 7: Check for anagrams
+def is_anagram(s, t):
+
+    if len(s) != len(t):
+        return False
+        
+    freq_s = {}
+    freq_t = {}
+    
+    for char in s:
+        if char in freq_s:
+            freq_s[char] += 1
+        else:
+            freq_s[char] = 1
+            
+    for char in t:
+        if char in freq_t:
+            freq_t[char] += 1
+        else:
+            freq_t[char] = 1
+            
+    return freq_s == freq_t
+
+print(is_anagram("anagram","nagaram"))
+print(is_anagram("rat","car"))
+
+
+# Example 8: Check Subsequence
+def is_subsequence(s, t):
+    i,j = 0,0
+    while i<len(t) and j<len(s):
+        if t[i] == s[j]:
+            i += 1
+        
+        j += 1
+    return i == len(t)
+        
+print(is_subsequence( "abcde","ace"))
+print(is_subsequence( "abcde","aec"))
+
+
+# Example 9: Check for Substring
+def is_substring(s, t):
+    if not t:
+        return True
+    
+    elif len(s) > len(t):
+        l = len(t)
+        for i in range(0,(len(s)-len(t))+1):
+            if s[i:i+l] == t:
+               return True
+        return False
+        
+    else:
+        return s == t
+print(is_substring("hello world","world"))
+
+
+# Example 10: Length of the Longest Word

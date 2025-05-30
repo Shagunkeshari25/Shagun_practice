@@ -401,4 +401,43 @@ def generate(numRows):
 print(generate(5))
 
 
-# Problem 
+# Problem 169: Majority Element
+
+# Solution
+def majorityElement(nums):
+        dict = {}
+        majority_ele = len(nums)//2
+        for i in nums:
+            if i in dict:
+                dict[i] += 1
+
+            else:
+                dict[i] = 1
+
+        for key in dict:
+            if dict[key] > majority_ele :
+                return key
+                
+        
+print(majorityElement([3,2,3]))
+
+
+# Problem 119: Pascal's Triangle II
+
+#solution :
+def getRow(rowIndex):
+        list = []
+        for i in range(rowIndex+1):
+            if i>1:
+                pre_row = list[i-1]
+                new_row = [1]
+                for j in range(len(pre_row)-1):
+                    new_row.append(pre_row[j] + pre_row[j+1])
+                new_row.append(1)
+                list.append(new_row)
+
+            else:
+                list.append([1]*(i+1))
+
+        return list[rowIndex]
+print(getRow(3))

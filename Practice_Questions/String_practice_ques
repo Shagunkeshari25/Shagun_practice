@@ -135,3 +135,15 @@ print(is_substring("hello world","world"))
 
 
 # Example 10: Length of the Longest Word
+
+
+
+
+
+# Example 11: Swap Strings
+def reverse_str(strings):
+    strings[0],strings[1] == strings[1] , strings[0]
+    return strings[::-1]
+
+strings = "BHOPAL DELHI"
+print(reverse_str(strings))

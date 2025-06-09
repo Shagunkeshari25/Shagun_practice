@@ -95,4 +95,3 @@ def gcd(n,m):           # By using Euclidean algorithm
 print(gcd(56,98))
 
 
-

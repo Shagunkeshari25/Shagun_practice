@@ -571,4 +571,73 @@ def search(nums, target):
                     right = mid - 1
 
         return -1
-print(search([4,5,6,7,0,1,2] ,4))       
+print(search([4,5,6,7,0,1,2] ,4))      
+
+
+# Problen 268: Missing Number
+
+# Solution :
+def missingNumber(nums):
+        n = len(nums)
+        expected_sum = n*(n+1)//2
+        actual_sum = sum(nums)
+
+        return expected_sum - actual_sum
+print(missingNumber([3, 0, 2]))
+print(missingNumber([0, 1]))
+
+
+# Problem 283: Move Zeroes
+
+# Solution :
+def moveZeroes(nums):         # Use two-pointer approach
+
+        non_zero_index = 0
+        for i in range(len(nums)):
+            if nums[i] != 0:
+                nums[non_zero_index] = nums[i]
+                non_zero_index += 1
+
+        while non_zero_index < len(nums):
+            nums[non_zero_index] = 0
+            non_zero_index += 1
+
+        return nums
+print(moveZeroes([0,1,0,3,12]))      
+
+
+# problem 349: Intersection of Two Arrays
+
+# Solution :
+def intersection(nums1,nums2):
+        count_intersection = []
+        s1 = set(nums1)
+        s2 = set(nums2)
+        for i in s1:
+            if i in s2:
+                count_intersection.append(i)
+        return count_intersection
+print(intersection([1, 2, 2, 1],[2,2]))
+print(intersection([4,9,5],[9,4,9,8,4]))
+
+
+# Problem 485: Max Consecutive Ones
+
+# Solution:
+def findMaxConsecutiveOnes(nums):
+        current_count = 0
+        max_count = 0
+        for n in nums:
+            if n == 1:
+                current_count += 1 
+                if current_count > max_count:
+                    max_count = current_count
+
+            else:
+                current_count = 0
+
+        return max_count
+print(findMaxConsecutiveOnes([1,1,0,1,1,1]))
+
+
+# Problem 

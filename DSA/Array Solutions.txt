@@ -77,14 +77,160 @@ def largest(arr):
 print(largest([1, 2, 5, 4, 0]))
 
 # Solution 7
-N = int(input("Enter N:"))
-arr = list(map(int,input("Enter arr:").split()))
-max_sum = float('-inf')
-current_sum = 0
-for num in arr:
-    current_sum += num
-    max_sum = max(max_sum,current_sum)
-    if current_sum < 0:
-        current_sum = 0
+# N = int(input("Enter N:"))
+# arr = list(map(int,input("Enter arr:").split()))
+# max_sum = float('-inf')
+# current_sum = 0
+# for num in arr:
+#     current_sum += num
+#     max_sum = max(max_sum,current_sum)
+#     if current_sum < 0:
+#         current_sum = 0
             
-print(max_sum)
+# print(max_sum)
+
+
+# Solution 8
+def find_max_element(lst):
+    max_element = lst[0]
+    for i in lst:
+        if i > max_element:
+            max_element = i
+            
+    return max_element
+print(find_max_element([-1, -2, -3, -4]))  
+
+
+# Solution 9:
+def sum_of_elements(lst):
+    total_sum = 0
+    for num in lst:
+        total_sum += num
+    return total_sum
+
+print(sum_of_elements([-1, -2, -3, -4])) 
+print(sum_of_elements([1, 2, 3, 4, 5])) 
+
+
+# Solution 10:
+def is_palindrome(lst):
+    left ,right = 0, len(lst)-1
+    while left <= right:
+        if lst[left] != lst[right]:
+            return False
+            
+        left += 1 
+        right -= 1 
+        
+    return True
+print(is_palindrome([7, 8, 9, 8, 7]))
+
+
+# SOlution 11:
+def reverse_list(lst):
+    left,right = 0,len(lst)-1
+    while left < right:
+        lst[left], lst[right] = lst[right],lst[left]
+        
+        left += 1 
+        right -= 1 
+        
+    return lst
+print(reverse_list([10, 20, 30]))
+
+
+# Solution 12:
+def rotate_left(ARR, D):
+   D = D % len(ARR)
+   rotated_arr = ARR[D:] + ARR[:D]
+   return rotated_arr
+print(rotate_left([1, 2, 3, 4, 5],2))
+print(rotate_left([7, 8, 9, 10],1))
+
+
+# Solution 13:
+def plus_one(digits):
+    for d in range(len(digits)-1 ,-1 ,-1):
+        if digits[d] < 9:
+            digits[d] += 1 
+            break  
+        
+        else:
+            digits[d] = 0
+            
+    else:
+        digits.insert(0,1)
+        
+    return digits
+
+print(plus_one([4, 3, 2, 1]))
+print(plus_one([9, 9, 9]))
+        
+
+# Solution 14:
+def find_missing_number(nums):
+    n = len(nums)
+    expected_sum = n*(n+1) //2
+    actual_sum = sum(nums)
+    
+    return expected_sum - actual_sum
+print(find_missing_number([3, 0, 2]))
+print(find_missing_number([0, 1]))
+        
+
+# Solution 15:
+def is_sorted(arr):
+    for n in range(len(arr)-1):
+        if arr[n+1] < arr[n]:
+            return False
+            
+    return True
+
+print(is_sorted([1, 3, 2, 4, 5]))
+
+
+# Solution 16:
+def move_zeroes(nums):
+    non_zero_index =0
+    for i in range(len(nums)):
+        if nums[i] != 0:
+            nums[non_zero_index] = nums[i]
+            non_zero_index += 1
+     
+    while non_zero_index < len(nums):
+        nums[non_zero_index] = 0
+        non_zero_index += 1 
+        
+    return nums
+print(move_zeroes([0, 1, 0, 3, 12]))
+
+
+# Solution 17: 
+def intersection(nums1, nums2):
+    count_intersection = []
+    s1 = set(nums1)
+    s2 = set(nums2)
+    for i in s1:
+        if i in s2:
+            count_intersection.append(i)
+        
+    return count_intersection
+print(intersection([1, 2, 3], [4, 5, 6]))
+print(intersection([1, 2, 2, 1],[2,2]))
+
+
+# Solution 18:
+def find_max_consecutive_ones(nums):
+    current_count = 0
+    max_count = 0
+    for i in nums:
+        if i == 1:
+            current_count += 1 
+            if current_count > max_count:
+                max_count = current_count
+                
+        else:
+            current_count = 0
+    return max_count
+
+print(find_max_consecutive_ones([1, 0, 1, 1, 0, 1, 1, 1, 1]))

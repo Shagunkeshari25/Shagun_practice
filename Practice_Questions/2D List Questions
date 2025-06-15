@@ -1,0 +1,67 @@
+# Problem 1: Rotate Image
+# Solution:
+def rotate(matrix):
+    n = len(matrix)
+    for i in range(n):
+        for j in range(i+1,n):
+            matrix[i][j] ,matrix[j][i]= matrix[j][i],matrix[i][j]
+    transpose_matrix = matrix
+    for i in transpose_matrix:
+        i.reverse()
+    
+    return transpose_matrix
+print(rotate([[1, 2, 3],
+                 [4, 5, 6],
+                 [7, 8, 9]]))        
+
+
+
+# Problem 2: Matrix obtained by Rotation or not?
+# Solution:
+def can_be_rotated(mat, target):
+    
+        n = len(mat)
+        if mat == target:
+            return True
+    
+        def rotate_90():
+            temp = [row[:] for row in mat] # it is a way to create a deep copy of a 2D list (matrix) without using the copy module.
+            for i in range(n):
+                for j in range(i+1,n):
+                    temp[i][j], temp[j][i] = temp[j][i] ,temp[i][j]
+        
+            for row in temp:
+                row.reverse()
+            return temp
+    
+        def rotate_270():
+            temp = [row[:] for row in mat]
+            for i in range(n):
+                for j in range(i+1,n):
+                    temp[i][j], temp[j][i] = temp[j][i] ,temp[i][j]
+        
+            temp.reverse()
+            return temp
+            
+        def rotate_180():
+            temp = [row[:] for row in mat]
+            for row in temp:
+                row.reverse()
+            
+            temp.reverse()
+            return temp
+        
+        if rotate_90() == target:
+            return True
+
+        if rotate_270() == target:
+            return True
+
+        if rotate_180() == target:
+            return True
+
+        return False
+
+print(can_be_rotated([[0, 0, 0], [0, 1, 0], [1, 1, 1]],[[1, 1, 1], [0, 1, 0], [0, 0, 0]]))   
+print(can_be_rotated([[1,1],[0,1]],[[1,1],[1,0]]))  
+    

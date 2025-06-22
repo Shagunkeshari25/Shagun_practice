@@ -706,3 +706,124 @@ def findRotation(mat, target):
 print(findRotation([[0, 0, 0], [0, 1, 0], [1, 1, 1]],[[1, 1, 1], [0, 1, 0], [0, 0, 0]]))   
 print(findRotation([[1,1],[0,1]],[[1,1],[1,0]]))  
     
+
+# Problem 509: Fibonacci Number
+
+# Solution:
+def fib(n):
+    if(n==0):
+        return 0
+    elif(n==1):
+        return 1
+
+    else:
+        return fib(n-1) + fib(n-2)
+    
+print(fib(3))
+
+
+# Problem 54: Spiral Matrix
+
+# Solution:
+def spiralOrder(matrix):
+        result = []
+        left , right = 0 , len(matrix[0])-1
+        top , bottom = 0, len(matrix) - 1
+
+        while top <= bottom and left <= right:
+            for i in range(left , right +1):
+                result.append(matrix[top][i])
+            top += 1 
+
+            for i in range(top, bottom +1):
+                result.append(matrix[i][right])
+            right -= 1 
+
+            if top <= bottom:
+                for i in range(right,left-1,-1):
+                    result.append(matrix[bottom][i])
+                bottom -= 1
+
+            if left <= right:
+                for i in range(bottom,top-1,-1):
+                    result.append(matrix[i][left])
+                left += 1
+
+        return result
+
+print(spiralOrder([[1,2,3,4],[5,6,7,8],[9,10,11,12]]))        
+
+
+# Problem 74: Search a 2D Matrix
+
+# Solution:
+def searchMatrix(matrix, target):
+
+    rows = len(matrix)
+    cols = len(matrix[0])
+
+    left , right = 0 , rows*cols-1
+    while left <= right:
+        mid = (left+right)//2
+        row = mid // cols
+        col = mid % cols
+
+        if matrix[row][col] == target:
+            return True
+
+        elif matrix[row][col] < target:
+            left = mid + 1 
+        else:
+            right = mid - 1
+    return False
+
+print(searchMatrix([[1,3,5,7],[10,11,16,20],[23,30,34,60]],13)) 
+
+
+# Problem 202: Happy Number
+
+# Solution:
+def isHappy(n):
+
+    previous_sum = set()
+    while True:
+        sum = 0
+        for i in str(n):
+            sum += int(i)**2
+
+        if sum == 1:
+            return True
+
+        if sum in previous_sum:
+            return False
+        
+        previous_sum.add(sum)
+        n = sum
+
+print(isHappy(19))
+print(isHappy(2))
+
+
+# Problem 566: Reshape the Matrix
+
+# Solution:
+def matrixReshape(mat, r, c):
+        r1 = len(mat)
+        c1 = len(mat[0])
+        if r1 * c1 != r * c:
+            return mat
+
+        lst = [n for row in mat for n in row]
+        new_mat = []
+        k = 0
+        for i in range(r):
+            flat_lst = []
+            for j in range(c):
+                flat_lst.append(lst[k])
+                k += 1
+            new_mat.append(flat_lst)
+
+        return new_mat
+
+print(matrixReshape([[1, 2], [3, 4]], r = 1, c = 4))
+print(matrixReshape([[1, 2], [3, 4]], r = 2, c = 4))

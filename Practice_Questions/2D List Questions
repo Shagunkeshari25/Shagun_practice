@@ -65,3 +65,83 @@ def can_be_rotated(mat, target):
 print(can_be_rotated([[0, 0, 0], [0, 1, 0], [1, 1, 1]],[[1, 1, 1], [0, 1, 0], [0, 0, 0]]))   
 print(can_be_rotated([[1,1],[0,1]],[[1,1],[1,0]]))  
     
+
+# Problem 3: Spiral Matrix
+# solution:
+def spiral_order(matrix):
+    result = []
+    
+    left , right = 0, len(matrix[0]) - 1
+    top , bottom = 0, len(matrix) - 1
+    
+    while top <= bottom and left <= right:
+        
+        for i in range(left,right+1):
+            result.append(matrix[top][i])
+        top += 1 
+        
+        for i in range(top ,bottom+1):
+            result.append(matrix[i][right])
+        right -= 1 
+        
+        if top <= bottom:
+            for i in range(right, left-1 ,-1):
+                result.append(matrix[bottom][i])
+            bottom -= 1 
+                
+        if  left <= right:
+            for i in range(bottom ,top-1,-1):
+                result.append(matrix[i][left])
+            left += 1 
+            
+    return result
+            
+print(spiral_order([[1, 2, 3],[4, 5, 6],[7, 8, 9]]))
+
+
+# Problem 4: Search a 2D Matrix
+# Solution:
+def search_matrix(matrix, target):
+    rows = len(matrix)
+    cols = len(matrix[0])
+
+    left ,right = 0, rows * cols - 1
+    while left <= right:
+        mid = (left+right)//2
+        row = mid // cols
+        col = mid % cols
+        
+        if matrix[row][col] == target:
+            return True
+        elif matrix[row][col] < target:
+            left = mid +1 
+        else :
+            right = mid -1 
+                
+    return False
+   
+print(search_matrix([[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 60]], 3)) 
+
+
+# Problem 5: Reshape Matrix
+# Solution:
+def matrix_reshape(mat, r, c):
+    
+    r1 = len(mat)
+    c1 = len(mat[0])
+    if r1 * c1 != r * c:
+        return mat
+    
+    new_mat = []
+    lst = [n for row in mat for n in row]
+    k = 0
+    for i in range(r):
+        flat_lst = []    
+        for j in range(c):
+            flat_lst.append(lst[k])
+            k += 1
+        new_mat.append(flat_lst)
+    return new_mat
+
+print(matrix_reshape([[1, 2], [3, 4]], r = 1, c = 4))
+print(matrix_reshape([[1, 2], [3, 4]], r = 2, c = 4))

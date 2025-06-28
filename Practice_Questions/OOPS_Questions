@@ -1,0 +1,125 @@
+
+# Problem 1: Bank Account System
+
+class BankAccount:
+    
+    def __init__(self, account_holder, initial_balance):
+        self.account_holder = account_holder
+        self.balance = initial_balance
+        
+    def deposit(self,amount):
+        self.balance += amount
+        return self.balance
+        
+    def withdraw(self,amount):
+        if amount > self.balance:
+            print("Insufficient balance.")
+            return self.balance
+        self.balance -= amount
+        return self.balance
+        
+    def transfer(self,transferring_account,amount):
+        if amount > self.balance:
+            print("Insufficient balance for transfer.")
+            return 
+        self.balance -= amount
+        transferring_account.balance += amount
+        
+    def get_balance(self):
+        print("total balance:",self.balance)
+
+acc1= BankAccount("Papa",1000000)
+acc2= BankAccount("Beta",20000)
+acc1.withdraw(500000)
+acc1.transfer(acc2,400000)
+acc2.withdraw(100000)
+acc2.withdraw(20000)
+acc2.withdraw(150000)
+acc1.get_balance()
+acc2.get_balance()
+
+
+# Problem 2: Calculator
+
+class Calculator:
+    def __init__(self, num1, num2):
+        # Initialize the attributes num1 and num2
+        self.num1 = num1
+        self.num2 = num2
+
+    def add(self):
+        return self.num1 + self.num2
+        
+    def subtract(self):
+        return abs(self.num2 - self.num1)
+
+    def multiply(self, factor):
+        return self.num1 * factor
+
+    def divide(self, divisor):
+        if divisor == 0:
+            print("Error:Cannot divide by zero")
+            
+        else:    
+            return self.num1 /divisor
+
+calculator = Calculator(10,5)
+print("Addition Result:", calculator.add())
+print("Subtraction Result:", calculator.subtract())
+print("Multiplication Result:", calculator.multiply(3))
+print("Division Result:", calculator.divide(2))  
+print("Division Result:", calculator.divide(0)) 
+
+
+# Problem 3: Complex Number Class
+
+class ComplexNumber:
+    def __init__(self, real, imaginary):
+        # Initialize real and imaginary parts
+        self.real = real
+        self.imaginary = imaginary
+    
+    def add(self, other):
+        return ComplexNumber(self.real + other.real, self.imaginary + other.imaginary)
+    
+    def subtract(self, other):
+        return ComplexNumber(self.real - other.real , self.imaginary - other.imaginary)
+    
+    def multiply(self, other):
+        real_part = self.real * other.real - self.imaginary * other.imaginary
+        imaginary_part = self.real * other.imaginary + self.imaginary * other.real
+        return ComplexNumber(real_part , imaginary_part)
+    
+    def divide(self, other):
+        denominator = other.real ** 2 + other.imaginary ** 2 
+        if denominator == 0 :
+            print("Error: Cannot divide by zero")
+            return None
+            
+        real_part = (self.real * other.real + self.imaginary * other.imaginary)/denominator
+        imaginary_part = (self.imaginary * other.real - self.real * other.imaginary) / denominator
+        return ComplexNumber(real_part , imaginary_part)
+        
+    def __eq__(self, other):
+        return (abs(self.real - other.real)< 1e-10) and (abs(self.imaginary - other.imaginary) < 1e-10)
+        
+    def __str__(self):
+        if self.imaginary >= 0:
+            return f"{self.real} + {self.imaginary}i"
+        else:
+            return f"{self.real} - {-self.imaginary}i"
+            
+    def __repr__(self):
+        return f"ComplexNumber({self.real},{self.imaginary})"
+        
+
+c1 = ComplexNumber(2, 3)
+c2 = ComplexNumber(1, 4)
+ 
+print("Addition Result:", c1.add(c2)) 
+print("Subtraction Result:", c1.subtract(c2))  
+print("Multiplication Result:", c1.multiply(c2))  
+print("Equality Test:", c1 == ComplexNumber(2, 3))  
+ 
+
+# Problem 4: 

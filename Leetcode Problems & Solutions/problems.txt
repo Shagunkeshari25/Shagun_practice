@@ -808,22 +808,97 @@ print(isHappy(2))
 
 # Solution:
 def matrixReshape(mat, r, c):
-        r1 = len(mat)
-        c1 = len(mat[0])
-        if r1 * c1 != r * c:
-            return mat
+    r1 = len(mat)
+    c1 = len(mat[0])
+    if r1 * c1 != r * c:
+        return mat
 
-        lst = [n for row in mat for n in row]
-        new_mat = []
-        k = 0
-        for i in range(r):
-            flat_lst = []
-            for j in range(c):
-                flat_lst.append(lst[k])
-                k += 1
-            new_mat.append(flat_lst)
+    lst = [n for row in mat for n in row]
+    new_mat = []
+    k = 0
+    for i in range(r):
+        flat_lst = []
+        for j in range(c):
+            flat_lst.append(lst[k])
+            k += 1
+        new_mat.append(flat_lst)
 
-        return new_mat
+    return new_mat
 
 print(matrixReshape([[1, 2], [3, 4]], r = 1, c = 4))
 print(matrixReshape([[1, 2], [3, 4]], r = 2, c = 4))
+
+
+# Problem 61: Rotate List
+
+# Solution:
+# def rotateRight(head, k):
+#     if not head  or not head.next or k==0 :
+#         return head
+    
+#     length = 1
+#     current = head
+#     while current.next:
+#         length += 1
+#         current = current.next
+    
+#     tail = current
+#     tail.next = head 
+
+#     k = k % length
+#     steps_to_new_tail = length - k
+    
+#     new_tail = head
+#     for _ in range(steps_to_new_tail -1):
+#         new_tail = new_tail.next
+
+#     new_head = new_tail.next
+#     new_tail.next = None
+
+#     return new_head
+        
+# print(rotateRight([1,2,3,4,5], k = 2))
+
+
+# Problem 141: Linked List Cycle
+
+# Solution:
+def hasCycle( head):
+
+    slow = head 
+    fast = head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+        if slow == fast:
+            return True
+
+    return False
+
+
+# Problem 142: Linked List Cycle II
+
+# Solution:
+def detectCycle(head):
+    slow = head
+    fast = head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+        if slow == fast:
+            break
+    else:
+        return None
+    
+    slow = head
+    pos = 0
+    while slow != fast:
+        slow = slow.next
+        fast = fast.next
+        pos += 1
+
+    return slow
+        
+        
+
+                

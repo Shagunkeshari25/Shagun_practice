@@ -1,1 +1,2 @@
-Str = s.lower().replace(" ","")
+return self.balance
+        

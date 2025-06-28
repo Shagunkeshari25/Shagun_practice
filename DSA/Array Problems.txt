@@ -38,3 +38,6 @@
 # 18.WAP for finding Max Consecutive Ones
 
 # 19.WAP to find Maximum Subarray Sum 
+
+# 20.Implementing our own List Class
+#     Custom Dynamic Array

@@ -145,3 +145,19 @@ def matrix_reshape(mat, r, c):
 
 print(matrix_reshape([[1, 2], [3, 4]], r = 1, c = 4))
 print(matrix_reshape([[1, 2], [3, 4]], r = 2, c = 4))
+
+
+# Problem 6: Transpose a matrix
+# Solution:
+def transpose(m):
+  new_matrix = [] 
+  for i in range(len(m[0])):
+    flat_lst = []
+    for j in range(len(m)):
+      flat_lst.append(m[j][i])
+  
+    new_matrix.append(flat_lst)
+    
+  return new_matrix
+  
+print(transpose([[1,2,3],[4,5,6]]))

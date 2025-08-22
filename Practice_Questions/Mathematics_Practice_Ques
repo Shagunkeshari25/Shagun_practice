@@ -95,3 +95,22 @@ def gcd(n,m):           # By using Euclidean algorithm
 print(gcd(56,98))
 
 
+# Problem 8: check for prime product
+def primeproduct(m):
+    def is_prime(n):
+        if n<2:
+           return False
+        for i in range(2,int(n**0.5)+1):
+            if n%i==0:
+               return False
+        return True
+  
+    for i in range(2,int(m**0.5)+1):
+        if m%i==0:
+           if is_prime(i) and is_prime(m//i):
+              return True
+    return False
+
+print(primeproduct(202))
+print(primeproduct(188))
+print(primeproduct(6))

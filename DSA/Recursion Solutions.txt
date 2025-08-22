@@ -1,0 +1,160 @@
+# Solution 1:
+def factorial(n):
+    if(n==0):
+        return 1
+        
+    smaller = factorial(n-1)
+    ans = n * smaller
+    return ans
+
+print(factorial(5))
+print(factorial(0))
+
+
+# Solution 2:
+def sum_of_natural_numbers(n):
+    if (n==0):
+        return 0
+        
+    smallAnswer = sum_of_natural_numbers(n-1)
+    ans = n + smallAnswer
+    return ans
+
+print(sum_of_natural_numbers(5))
+
+
+# Solution 3:
+def count_digits(n):
+    if (n>=1 and n<=9):
+        return 1 
+        
+    elif (n==0):
+        return 1
+        
+    smallNumber = n//10
+    smallAnswer = count_digits(smallNumber)
+    ans = 1 + smallAnswer
+    
+    return ans
+
+    #OR
+def count_digits(n):
+    if n==0:
+        return 0
+    
+    return 1 + count_digits(n//10)
+
+print(count_digits(348579))
+
+
+# Solution 4: 
+def fibonacci(n):
+    
+    if (n==0):
+        return 0
+    
+    if (n==1):
+        return 1
+        
+    last = fibonacci(n-1)
+    secondlast = fibonacci(n-2)
+    ans = last + secondlast
+    
+    return ans
+    
+print(fibonacci(5))
+
+
+# Solution 5:
+def count_to_n(n):
+    if (n==1):
+        return [1]
+        
+    return count_to_n(n-1) + [n]
+print(count_to_n(6))
+
+
+# Solution 6:
+def count_down(n):
+    if (n==1):
+        return [1]
+        
+    return [n] + count_down(n-1)
+print(count_down(5))
+    
+
+# Solution 7:
+def recursive_sum(arr):
+    if (len(arr)== 0):
+        return 0
+        
+    return  arr[0] + recursive_sum(arr[1:])
+
+print(recursive_sum([]))
+print(recursive_sum([1,2,3,4,5]))
+
+
+# Solution 8:
+def find_first_index(arr, element):
+    if (len(arr)== 0):
+        return -1
+        
+    if(arr[0]==element):
+        return 0
+        
+    ans = find_first_index(arr[1:],element)
+    
+    if (ans == -1):
+        return ans
+        
+    else:
+        return ans + 1
+
+            # OR
+
+def find_first_index(arr, element):
+    # Helper function to perform the recursive search
+    def helper(index):
+        if index == len(arr):
+            return -1
+        
+        if arr[index] == element:
+            return index  
+        else:
+            return helper(index + 1)  
+    # Start the recursive search from index 0
+    return helper(0)
+
+print(find_first_index([1, 2, 3, 2, 4, 2],2))
+
+
+# Solution 9:
+def find_indices(arr, element):
+    lst =[]
+    def helper(index):
+    
+        if len(arr) == index:
+            return lst
+        
+        if arr[index] == element:
+            lst.append(index)
+            
+        return helper(index+1)
+        
+    return helper(0)
+
+print(find_indices([1, 2, 3, 2, 4, 2],2))  
+
+
+# Solution 10:
+def UpdateAllIndices(l1,x,index,anslist):
+    if (len(l1)== index):
+        return 
+    if (l1[index]== x):
+        anslist.append(index)
+
+    UpdateAllIndices(l1,x,index+1,anslist)
+    
+anslist = []
+UpdateAllIndices([3,5,2,2,8,2],2,0,anslist)
+print(anslist)

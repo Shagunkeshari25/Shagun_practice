@@ -898,7 +898,95 @@ def detectCycle(head):
         pos += 1
 
     return slow
-        
-        
 
-                
+
+# Problem 206: Reverse Linked List
+
+# Solution:
+def reverseList(head):
+    if not head or not head.next:
+        return head
+
+    previous_node = None
+    current = head 
+    next_node = current.next
+
+    while current: 
+        next_node = current.next
+        current.next = previous_node
+        previous_node = current
+        current = next_node
+
+    return previous_node
+    
+
+# Problem 492: Construct the Rectangle
+        
+# Solution:
+def constructRectangle(area):
+    result = [area,1]
+    min_value = area-1
+    for i in range(1 , int(area ** 0.5) + 1):
+        if area % i == 0:
+            L = area//i
+            W = i
+            if L >= W and (L - W) <= min_value:
+                min_value = L-W
+                result = [L,W]
+    return result    
+    
+print(constructRectangle(37))
+print(constructRectangle(122122))
+
+
+# Problem 326: Power of Three
+
+# Solution :
+def isPowerOfThree(n):
+    if n < 1 :
+        return False
+        
+    while n % 3 == 0:
+        n //= 3
+    return n == 1
+
+print(isPowerOfThree(154))
+print(isPowerOfThree(1))
+
+
+# Problem 2264: Largest 3-Same-Digit Number in String
+
+# Solution:
+def largestGoodInteger(num):
+    good = ""
+    count = 1
+    for i in range(1,len(num)):
+        if num[i] == num[i-1]:
+            count += 1
+        else:
+            count = 1 
+                        
+        if count == 3:
+            triple = num[i] * 3
+            if triple > good:
+                good = triple   
+    return good
+
+print(largestGoodInteger("6777133339")) #There are two distinct good integers: "777" and "333"
+                                        # "777" is the largest, so we return "777".
+
+print(largestGoodInteger("42352338"))
+
+
+# Problem 342: Power of Four
+
+# Solution:
+def isPowerOfFour(n):
+    while n > 1:
+        if n % 4 == 0:
+            n //= 4
+        else:
+            return False
+        
+    return n == 1
+

@@ -1,0 +1,19 @@
+# Problem 1: Factorial of a number using Recursion
+
+# Problem 2: Sum of N numbers using Recursion
+
+# Problem 3: Number of Digits using Recursion
+
+# Problem 4: Fibonacci Series using Recursion
+
+# Problem 5: Print 1 to N using Recursion
+
+# Problem 6: Print N to 1 using Recursion
+
+# Problem 7: Sum of an Array using Recursion
+
+# Problem 8: First Index of an Element using Recursion
+
+# Problem 9: Print all Index of Element using Recursion
+
+# Problem 10: Update the answer in List Provided

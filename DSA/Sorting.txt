@@ -66,7 +66,116 @@ def insertion_sort_inplace(lst):
 print(insertion_sort([3,9,6,2,1]))
 
 
+# Merge sort using Recursion
+def merge_sort(arr):
+    def mergeSortHelper(arr,s,e):
+        if s >= e:
+            return
+        m = s + (e-s)//2
+        
+        mergeSortHelper(arr,s,m)
+        mergeSortHelper(arr,m+1,e)
+        
+        merge(arr,s,m,e)
+        
+        return 
+    
+    def merge(arr,s,m,e):
+        i = s 
+        j = m+1 
+        ans =[]
+        
+        while (i<=m and j<=e):
+            if arr[i] < arr[j]:
+                ans.append(arr[i])
+                i+=1 
+                
+            elif arr[i] > arr[j]:
+                ans.append(arr[j])
+                j+=1 
+                
+            elif arr[i] == arr[j]:
+                ans.append(arr[i])
+                ans.append(arr[j])
+                i += 1 
+                j += 1 
+                
+        while i<= m :
+            ans.append(arr[i])
+            i += 1 
+            
+        while j <=e :
+            ans.append(arr[j])
+            j += 1 
+            
+        startofmyans = 0
+        startofmyList = s 
+        while startofmyList <= e:
+            arr[startofmyList] = ans[startofmyans]
+            startofmyans += 1 
+            startofmyList += 1 
+        return 
+    
+    mergeSortHelper(arr,0,len(arr)-1)
+    return arr
 
+print(merge_sort([3, 0, 2, 5, -1, 4, 1]))
+
+      # OR
+
+def merge_sort(arr):
+    if len(arr) <= 1:
+        return arr
+ 
+    mid = len(arr) // 2
+ 
+    left_half = merge_sort(arr[:mid])
+    right_half = merge_sort(arr[mid:])
+ 
+    return merge(left_half, right_half)
+ 
+def merge(left, right):
+    sorted_list = []
+    i = j = 0
+ 
+    while i < len(left) and j < len(right):
+        if left[i] < right[j]:
+            sorted_list.append(left[i])
+            i += 1
+        else:
+            sorted_list.append(right[j])
+            j += 1
+ 
+    while i < len(left):
+        sorted_list.append(left[i])
+        i += 1
+ 
+    while j < len(right):
+        sorted_list.append(right[j])
+        j += 1
+ 
+    return sorted_list
         
+print(merge_sort([5, 2, 9, 1, 5, 6])) 
+
+
+# Quick Sort Using Recursion
+def quick_sort(arr):
+    if len(arr) <= 1 :
+        return arr
+    
+    pivot = arr[-1]
+    smallerThanPivot = []
+    greaterThanPivot = []
+    
+    for i in range(len(arr)-1):
+        if arr[i] < pivot :
+            smallerThanPivot.append(arr[i])
+            
+        else :
+            greaterThanPivot.append(arr[i])
         
+    return quick_sort(smallerThanPivot) + [pivot] + quick_sort(greaterThanPivot)
+
+print(quick_sort([3,5,2,1,9,8]))
         

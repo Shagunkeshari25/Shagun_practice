@@ -158,3 +158,118 @@ def UpdateAllIndices(l1,x,index,anslist):
 anslist = []
 UpdateAllIndices([3,5,2,2,8,2],2,0,anslist)
 print(anslist)
+
+
+# Solution 11:
+def linear_search(arr, target):
+    def helper(index): 
+        if len(arr) == index:
+            return False
+            
+        if arr[index] == target:
+            return True
+            
+        return helper(index+1)
+        
+    return helper(0)
+
+      # OR
+
+def linear_search(arr, target):
+    if len(arr) == 0:
+        return False
+    
+    if arr[0] == target:
+        return True
+    
+    return linear_search(arr[1:], target)
+
+print(linear_search([3, 5, 1, 7, 9],1))
+print(linear_search([10, 20, 30, 40],25))
+
+
+# Solution 12:
+def is_palindrome(s):
+    def palindrome_helper(s,start,end):    #Each recursive call only compares two characters 
+        if (start >= end):                        #and does not create new substrings.
+            return True                           #also better in performance and memory efficiency
+            
+        if (s[start] != s[end]):
+            return False
+            
+        return palindrome_helper(s,start+1,end-1)
+        
+    return palindrome_helper(s,0,len(s)-1)
+print(is_palindrome("abcba"))
+
+          #OR
+
+def is_palindrome(s):
+    if len(s) <= 1:
+        return True
+    
+    if s[0] != s[-1]:
+        return False
+    
+    return is_palindrome(s[1:-1])
+print(is_palindrome("radar"))
+
+
+# Solution 13:
+def subsequences(s):
+    if s == "":
+        return [""]
+ 
+    first_char = s[0]
+    remaining_subsequences = subsequences(s[1:])
+ 
+    all_subsequences = []
+ 
+    all_subsequences.extend(remaining_subsequences)
+    
+    for subseq in remaining_subsequences:
+        all_subsequences.append(first_char + subseq)
+ 
+    return all_subsequences
+
+print(subsequences('abc'))
+
+
+# Solution 14:
+def permutations(s):
+    if s == '':
+        return ['']
+        
+    currentChar = s[0]
+    SmallAns = permutations(s[1:])
+    
+    AllPermutations = []
+    
+    for eachPerm in SmallAns:
+        for pos in range(0,len(eachPerm)+1):
+            AllPermutations.append(eachPerm[0:pos] + currentChar + eachPerm[pos:])
+            
+    return AllPermutations
+    
+print(permutations('abc'))
+
+
+# Solution 15:
+step = 1
+def tower_of_hanoi(n,source,destination,auxiliary):
+    global step
+    if (n==0):
+        return
+    
+    if (n==1):
+        print(step,source,'--->',destination)
+        step += 1
+        return
+    
+    tower_of_hanoi(n-1,source,auxiliary,destination)
+    print(step,source,'--->',destination)
+    step += 1
+    tower_of_hanoi(n-1,auxiliary,destination,source)
+    
+
+print(tower_of_hanoi(4,'source','destination','auxiliary'))

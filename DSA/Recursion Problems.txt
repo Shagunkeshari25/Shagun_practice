@@ -17,3 +17,13 @@
 # Problem 9: Print all Index of Element using Recursion
 
 # Problem 10: Update the answer in List Provided
+
+# Problem 11: Linear Search using Recursion
+
+# Problem 12: Palindrome Check using Recursion
+
+# Problem 13: Subsequences of a String
+
+# Problem 14: Permutation of a String
+
+# Problem 15: Tower of Hanoi

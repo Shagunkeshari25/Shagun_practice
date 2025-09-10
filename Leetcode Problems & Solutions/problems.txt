@@ -990,3 +990,110 @@ def isPowerOfFour(n):
         
     return n == 1
 
+
+# Problem 19: Remove Nth Node From End Of List
+
+# Solution:
+def removeNthFromEnd(head,n):
+    temp = head
+    current = head
+    length = 1
+    while temp.next:
+        length += 1
+        temp = temp.next
+    
+    k = length - n
+
+    if k == 0:
+        return head.next
+
+    while k >1:
+        current = current.next
+        k -= 1
+    
+    current.next = current.next.next
+    return head
+
+
+# Problem 22: Generate Parentheses
+
+# Soluiton:
+def generateParenthesis(n):
+    result = []
+
+    def backtrack(current,open,close):
+        if open == n and close == n:
+            result.append(current)
+            return
+
+        if open < n :
+            backtrack(current + '(', open+1 , close)
+
+        if close < open:
+            backtrack(current + ')', open , close+1)
+
+    backtrack("",0,0)
+    return result
+
+generateParenthesis(3)
+
+
+# Problem 17: Letter Combinations of a Phone Number
+def letterCombinations(digits):
+        keys = {'2':'abc','3':'def','4':'ghi','5':'jkl','6':'mno','7':'pqrs','8':'tuv', '9':'wxyz'}
+        if digits == '':
+            return []
+            
+        if len(digits) == 1:
+            return [digit for digit in keys[digits]]
+
+        first_digit_letter = keys[digits[0]]
+        SmallAns = letterCombinations(digits[1:])
+        result = []
+
+        for i in first_digit_letter:
+            for j in SmallAns:
+                result.append(i + j)
+
+        return result  
+
+print(letterCombinations('23'))
+
+
+# Problem 3: Longest Substring Without Repeating Characters
+def lengthOfLongestSubstring(s):
+    if s == "":
+        return 0
+        
+    substring = ""
+    Substring = ""
+    for i in s:
+        if i not in substring:
+            substring += i
+
+        else:
+            if len(Substring) <= len(substring):
+                Substring = substring
+            index = substring.index(i)
+            substring = substring[index+1:] + i
+
+    return max(len(substring), len(Substring))
+print(lengthOfLongestSubstring("bbb"))
+
+       # OR
+
+def lengthOfLongestSubstring(s):
+    seen_char = set()
+    left = 0
+    max_length = 0
+
+    for right in range(len(s)):
+        while s[right] in seen_char:
+            seen_char.remove(s[left])
+            left += 1
+
+        seen_char.add(s[right])
+        max_length = max(max_length, right-left +1)
+
+    return max_length
+print(lengthOfLongestSubstring("abcabcbb"))

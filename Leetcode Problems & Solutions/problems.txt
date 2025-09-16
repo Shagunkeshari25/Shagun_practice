@@ -1097,3 +1097,120 @@ def lengthOfLongestSubstring(s):
 
     return max_length
 print(lengthOfLongestSubstring("abcabcbb"))
+
+
+# Problem 5: Longest Palindromic Substring
+def longestPalindrome(s):
+
+    def aroundCenter(left,right):
+        while left>=0 and right < len(s) and s[left] == s[right]:
+            left -= 1
+            right += 1
+        return s[left+1:right]
+         
+    S = ""
+    for i in range(len(s)):
+        odd = aroundCenter(i,i)
+        even = aroundCenter(i,i+1)
+        
+        if len(odd) > len(S):
+            S = odd
+        if len(even) > len(S):
+            S = even
+
+    return S
+print(longestPalindrome("racecat"))
+print(longestPalindrome("abbad"))
+
+
+# Problem 7: Reverse Integer
+def reverse(x):
+        sign = -1 if x < 0 else 1
+            
+        res = str(abs(x))[::-1]
+        res = res.lstrip('0')
+        
+        if not res:
+            return 0
+
+        reverse_num = sign * int(res)
+
+        if reverse_num < -2**31 or reverse_num > 2**31 - 1:
+            return 0
+        return reverse_num
+
+        # OR
+def reverse(x):
+        res = 0
+        if x < 0:   
+            res = int(str(x)[1:][::-1]) * -1
+        else:
+            res = int(str(x)[::-1])
+
+        if res < -2**31 or res > 2**31 - 1:
+            return 0
+
+        return res
+
+print(reverse(-123))
+
+
+# Problem 1838: Frequency of the Most frequent Element   
+def maxFrequency(nums ,k):
+        nums.sort()
+        left = 0
+        total = 0
+        max_freq = 0
+        
+        for right in range(len(nums)):
+            total += nums[right]
+
+            while (right-left+1) * nums[right] - total > k:
+                total -= nums[left]
+                left += 1
+               
+            max_freq = max(max_freq , right - left+1)
+
+        return max_freq  
+
+print(maxFrequency([1,2,4],5)) 
+print(maxFrequency([3,6,9],2)) 
+print(maxFrequency([1,4,8,13],5)) 
+
+
+# Problem 1004: Max Consecutive Ones III
+def longestOnes(nums,k):
+        left = 0 
+        max_len = 0
+        count = 0
+
+        for right in range(len(nums)):
+            if nums[right] == 0:
+                count += 1
+                
+            while right < len(nums) and count > k:
+                if nums[left] == 0:
+                    count -= 1
+                left += 1
+            
+            max_len = max(max_len ,right-left +1)
+
+        return max_len
+
+        # OR
+def longestOnes(nums,k):
+    left = 0
+    zeroCount = 0
+
+    for num in nums:
+        if num == 0:
+            zeroCount += 1
+        if zeroCount > k:
+            if nums[left] == 0:
+                zeroCount -= 1
+            left += 1
+
+    return len(nums) - left     
+print(longestOnes([1,1,1,0,0,0,1,1,1,1,0],2))  
+        
+
